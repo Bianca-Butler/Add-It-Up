@@ -2,13 +2,41 @@
 <html lang = "en">
 <head>
     <meta charset="UTF-8">
-    <Title> Add It Up</title>
+    <title> Add It Up</title>
+    <link rel = "stylesheet" href = "{{url_for("static", filename = "style.css")}}">
+
 </head>
 <body>
     <h1>Add It Up</h1>
     <p> Your personal expense tracker!</p>
 </body>
 
+<h2> Set Your Budget </h2>
+<form action="/budget" method = "POST">
+    <label for = "budget"> Budget Amount </label>
+    <input type = "number" id = "budget" name = "budget"
+           min = "0" step = "0.01" required>
+    <br><button type = "submit"> Set Budget </button>
+</form>
+
+
+<div class = "summary">
+    <div class = "card">
+        <h3> Budget </h3>
+        <p> ${{"%.2f" | format(budget) }} </p>
+    </div>
+
+    <div class = "card">
+        <h3> Total Spent </h3>
+        <p> ${{"%.2f" | format(total) }} </p>
+    </div>
+
+    <div class = "card">
+        <h3> Remaining </h3>
+        <p> ${{"%.2f" | format(remaining) }} </p>
+    </div>
+
+<h2> Track your expenses </h2>
 <form action="/" method = "POST">
     <label for = "name"> Expense Name:</label>
     <input type = "text" id = "name" name = "name" required>
@@ -29,13 +57,52 @@
     </select>
     <br><button type = "submit"> Add Expense </button>
 
-<h2> Total Spending: ${{"%.2f" | format(total)}}</h2>
-<h2> Expense History </h2>
-{% for expense in expenses %}
-<p>
-    {{ expense.name }} -
-    ${{"%.2f" | format(expense.amount)}} -
-    {{ expense.category }}
 
-</p>
+<h2> Expense History </h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Expense</th>
+            <th>Amount</th>
+            <th>Category</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td> {{ expense.name }}</td>
+            <td>${{ "%.2f" | format(expense.amount )}}</td>
+            <td> {{expense.category }}</td>
+        </tr>
+        {% endfor%}
+    </tbody>
+</table>
+
+
+<h2>Previous Budgets</h2>
+
+{% for previousBudget in budgetHistory %}
+    <div class="card">
+        <h3>Budget #{{ loop.index }}</h3>
+
+        <p>Original Budget:
+            ${{ "%.2f"|format(previousBudget.budget) }}
+        </p>
+
+
+<h4>Saved Expenses</h4>
+
+{% for expense in previousBudget.expenses %}
+    <p>
+        {{ expense.name }} -
+        ${{ "%.2f"|format(expense.amount) }} -
+        {{ expense.category }}
+    </p>
 {% endfor %}
+
+    </div>
+{% endfor %}
+

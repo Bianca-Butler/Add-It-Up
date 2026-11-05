@@ -1,0 +1,74 @@
+[
+    {
+        "budget": 250.0,
+        "expenses": [
+            {
+                "name": "Uber",
+                "amount": 8.45,
+                "category": "Transportation"
+            },
+            {
+                "name": "Halal Food King",
+                "amount": 21.98,
+                "category": "Food"
+            }
+        ]
+    },
+    {
+        "budget": 100.0,
+        "expenses": []
+    },
+    {
+        "budget": 90.0,
+        "expenses": [
+            {
+                "name": "Lyft",
+                "amount": 10.0,
+                "category": "Transportation"
+            },
+            {
+                "name": "Carry-out",
+                "amount": 19.98,
+                "category": "Transportation"
+            }
+        ]
+    },
+    {
+        "budget": 90.0,
+        "expenses": []
+    },
+    {
+        "budget": 190.0,
+        "expenses": [
+            {
+                "name": "random",
+                "amount": 98.0,
+                "category": "Other"
+            }
+        ]
+    },
+    {
+        "budget": 89.0,
+        "expenses": []
+    },
+    {
+        "budget": 9000.0,
+        "expenses": [
+            {
+                "name": "Ipad",
+                "amount": 2000.0,
+                "category": "Other"
+            },
+            {
+                "name": "Hulu",
+                "amount": 7.76,
+                "category": "Entertainment"
+            },
+            {
+                "name": "Amazon Prime",
+                "amount": 6.97,
+                "category": "Other"
+            }
+        ]
+    }
+]
